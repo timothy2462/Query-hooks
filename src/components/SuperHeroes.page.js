@@ -1,48 +1,41 @@
-// import { useState, useEffect } from 'react'
-// import axios from 'axios'
 
-// export const SuperHeroesPage = () => {
-//   const [isLoading, setIsLoading] = useState(true)
-//   const [data, setData] = useState([])
-//   const [error, setError] = useState('')
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-//   useEffect(() => {
-//     axios
-//       .get('http://localhost:4000/superheroes')
-//       .then(res => {
-//         setData(res.data)
-//         setIsLoading(false)
-//       })
-//       .catch(error => {
-//         setError(error.message)
-//         setIsLoading(false)
-//       })
-//   }, [])
+export const SuperHeroesPage = () => {
+  const [isLoading, setIsLoading] = useState(true)
+  const [facts, setFacts] = useState([])
+  const [error, setError] = useState('')
 
-//   if (isLoading) {
-//     return <h2>Loading...</h2>
-//   }
+  useEffect(() => {
+    axios
+      .get('https://catfact.ninja/facts') 
+      .then(res => {
+        setFacts(res.data.data) 
+        setIsLoading(false)
+      })
+      .catch(error => {
+        setError(error.message)
+        setIsLoading(false)
+      })
+  }, [])
 
-//   if (error) {
-//     return <h2>{error}</h2>
-//   }
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
 
-//   return (
-//     <>
-//       <h2>Super Heroes Page</h2>
-//       {data.map(hero => {
-//         return <div key={hero.name}>{hero.name}</div>
-//       })}
-//     </>
-//   )
-// }
+  if (error) {
+    return <h2>{error}</h2>
+  }
 
-
-import React from 'react'
-
- const SuperHeroes= () => {
   return (
-    <div>SuperHeroes.page</div>
+    <>
+      <h2>Super Heroes Page</h2>
+      <div>
+        {facts.map((fact, index) => (
+          <p key={index}>{fact.fact}</p>
+        ))}
+      </div>
+    </>
   )
 }
-export default SuperHeroes

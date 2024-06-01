@@ -13,8 +13,6 @@
 //     return <h2>{error.message}</h2>
 //   }
 //   return (
-//     <div>
-//       {data.data.name} - {data.data.alterEgo}
-//     </div>
+
 //   )
 // }
