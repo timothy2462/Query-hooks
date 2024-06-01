@@ -40,8 +40,9 @@
 
 import React from 'react'
 
-export const SuperHeroes= () => {
+ const SuperHeroes= () => {
   return (
     <div>SuperHeroes.page</div>
   )
 }
+export default SuperHeroes
